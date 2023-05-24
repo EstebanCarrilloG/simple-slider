@@ -31,11 +31,15 @@ window.addEventListener('load',function(){
         });
     }
 
+    //Pagination, dots rendering
+
     function pagination(){
         sliderDb.forEach((e,index)=> {
             document.querySelector(".pagination").innerHTML += `<li><button class = "dot">${index}</button></li>`      
         }); 
     }
+
+// Auto sliding.
 
     setInterval(() => {(!isPaused) ? renderItem("next"):0}, 5000);
 
@@ -44,17 +48,23 @@ window.addEventListener('load',function(){
 
     const delay = ()=> setTimeout(function(){isPaused = false} , 6000);
 
+    // Right button click
+
     document.querySelector(".next-item").addEventListener('click', function(){
         isPaused = true;
         renderItem("next");
         delay();     
     });
 
+    // Left button click
+
     document.querySelector(".prev-item").addEventListener('click', function(){
         isPaused = true;
         renderItem("prev");
         delay(); 
     });
+
+    //Dot click
 
     document.querySelectorAll(".dot").forEach((e,dotIndex) =>{
         e.addEventListener("click", function(e){
